@@ -4,13 +4,12 @@ on:
     branches:
         - master
 jobs:
-  build-image:
+  build:
     runs-on: ubuntu-latest
     steps:
-             - uses: actions/checkout@v2
-             - name: build image
-               run: |
-                       docker build --tag pharogrammer/django-test:v0.1 ../.
-                       docker login -u ${ secrets.DOCKER_USERNAME } -p ${ secrets.DOCKER_PASSWORD }
-                       docker push pharogrammer/django-test:v0.1
-
+    - uses: actions/checkout@v2
+    - name: build image
+      run: |
+             docker build --tag pharogrammer/django-test:v0.1 ../.
+             docker login -u ${ secrets.DOCKER_USERNAME } -p ${ secrets.DOCKER_PASSWORD }
+             docker push pharogrammer/django-test:v0.1
