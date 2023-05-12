@@ -1,14 +1,15 @@
-name: Docker
+name: BUILD DOCKER IMAGE
 on:
   push:
     branches:
         - master
 jobs:
-  test:
+  build-image:
     runs-on: ubuntu-latest
-      steps:
+    steps:
        - name: run tests
          run: |
                  docker build . -t pharogrammer/django-test:v0.1
                  docker login -u ${ secrets.DOCKER_USERNAME } -p ${ secrets.DOCKER_PASSWORD }
                  docker push pharogrammer/django-test:v0.1
+
