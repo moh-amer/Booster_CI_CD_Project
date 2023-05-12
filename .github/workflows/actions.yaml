@@ -7,9 +7,9 @@ jobs:
   build-image:
     runs-on: ubuntu-latest
     steps:
-       - name: run tests
+       - name: run building process
          run: |
-                 docker build . --file Dockerfile -t pharogrammer/django-test:v0.1
+                 docker build . --file dockerfile --tag pharogrammer/django-test:v0.1
                  docker login -u ${ secrets.DOCKER_USERNAME } -p ${ secrets.DOCKER_PASSWORD }
                  docker push pharogrammer/django-test:v0.1
 
