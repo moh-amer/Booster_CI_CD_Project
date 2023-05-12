@@ -1,0 +1,14 @@
+name: Docker
+on:
+  push:
+    branches:
+        - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+      steps:
+       - name: run tests
+         run: |
+                 docker build . -t pharogrammer/django-test:v0.1
+                 docker login -u ${ secrets.DOCKER_USERNAME } -p ${ secrets.DOCKER_PASSWORD }
+                 docker push pharogrammer/django-test:v0.1
